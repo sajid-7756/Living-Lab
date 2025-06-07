@@ -513,6 +513,13 @@
     </div>
   </section>
 
+    <!-- Scroll to Top Button -->
+  <div class="container mx-auto px-4 relative">
+    <button id="scrollToTopBtn" title="Go to top" class="absolute right-4 -top-16 z-50 bg-white hover:bg-green-50 text-green-600 rounded-full p-4 shadow-lg transition-all duration-300 opacity-0 pointer-events-none border-2 border-green-600 hover:scale-110">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" /></svg>
+    </button>
+  </div>
+
   <!-- Footer -->
   <footer class="bg-[#179800] pt-20 sm:pt-28">
 
@@ -567,7 +574,22 @@
     const menu = document.getElementById('menu');
     btn.addEventListener('click', () => {
     menu.classList.toggle('hidden');
-});
+  });
+
+    // Scroll to Top Button Logic
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    window.addEventListener('scroll', () => {
+    if (window.scrollY > 200) {
+    scrollToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+    scrollToTopBtn.classList.add('opacity-100');
+    } else {
+    scrollToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+    scrollToTopBtn.classList.remove('opacity-100');
+  }
+  });
+    scrollToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
   </script>
 </body>
 
